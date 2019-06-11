@@ -20,7 +20,6 @@ function toggleSong() {
 
 function setup() {
    createCanvas(600, 400);
-   background(100, 0, 255); 
            // creating sliders, first position-arg for width second for height
    sliderRed = createSlider(0, 255, 100);
    sliderRed.position(200, 200);
