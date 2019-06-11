@@ -1,5 +1,4 @@
 let song;
-let slider;
 
 function preload() {
   song = loadSound('./assets/js/p5/canvas/OctopusGarden.mp3');
