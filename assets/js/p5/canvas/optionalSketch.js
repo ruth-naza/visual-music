@@ -20,7 +20,7 @@ function toggleSong() {
 
 function setup() {
    createCanvas(600, 400);
-   background(1000, 0, 255); 
+   background(100, 0, 255); 
            // creating sliders, first position-arg for width second for height
    sliderRed = createSlider(0, 255, 100);
    sliderRed.position(200, 200);
@@ -37,14 +37,13 @@ function setup() {
 
 
 function draw() {
-  if (song.isPlaying()) {
-
-        // setting dinamic background when music played, i know its very basic, but its for start :) (using UnSplash API?)
+         // setting dinamic background when music played, i know its very basic, but its for start :) (using UnSplash API?)
     const r = sliderRed.value();
     const g = sliderGreen.value();
     const b = sliderBlue.value();
     background(r, g, b);
 
+  if (song.isPlaying()) {
           // the 3 lines, check y height 
      let vol = amp.getLevel();
     MiliSecondsArray.push(vol);
@@ -78,10 +77,6 @@ function draw() {
     }
     stroke(0, 255 ,255);
     line(MiliSecondsArray.length, 0, MiliSecondsArray.length, height)
-
-
-  } else {
-    background(100, 0, 255);
-  }
+  } 
 }
 
