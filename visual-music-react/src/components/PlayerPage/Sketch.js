@@ -1,12 +1,16 @@
+// this canvas its only an example! some of the elemets here will probably stay and more important, like the
+// full-size functionality or the point of pushing every miliSecond arg to an array,
+// but the style, the shape of the draw etc are just v0.0.1 ...
+
+
 import React from 'react'
 import octuopus from './OctopusGarden.mp3'
 import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 import * as p5 from 'p5';
 
-// the sketch getting argument p stand for 'prototype' - for more info check react-p5-wrapper npm package
+// where is thie 'p' coming from? thank to react-p5-wrapper package we able to use p5.js syntax such preload or createCanvas, with tha addition of p.
 export default function sketch(p) {
-// this example made just for the begging and to get used and famalliar with p5 syntax, and syntax adjust for react
 
 // creating emptey array, each milisecond in the audio should send arguement to here 
 let MiliSecondsArray = [];
@@ -19,52 +23,51 @@ let amp;
 
 p.preload = function() {
   song = p.loadSound(octuopus);
-}
+   }    
+  // those functions are for rerender as the things happen in the app, the setup and draw vanila p5.js functions are next               
 
-function toggleSong() {
-   if (song.isPlaying()) {
-    song.stop();
-        // it's possible in p5 to do a command such song.pause() and song.resume(). 
-        // in case that the song fully stop, the next line delete the current history
-    MiliSecondsArray= []
-  } else {
-    song.play()
-  }
-}
-        // this awfull name its from according to the docs :/
- p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-    if (props.isFullSize){
- p.resizeCanvas(p.windowWidth, p.windowHeight); 
-    } else {
-      p.resizeCanvas(p.windowWidth,400)
-    }
-  };
+                 // this awfull name its according to react-p5-wrapper docs :/
+               p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+                  if (props.isFullSize){
+               p.resizeCanvas(p.windowWidth, p.windowHeight); 
+                  } else {
+                    p.resizeCanvas(p.windowWidth,400)
+                  }        
 
-  p.windowResized = function (props) {
-    if (MiliSecondsArray.length > p.windowWidth -70 ) {
-      MiliSecondsArray.splice(0 ,70 + MiliSecondsArray.length - p.windowWidth)
-    }
-    if (props.isFullSize){
-  p.resizeCanvas(p.windowWidth, p.windowHeight); 
-    } else {
-      p.resizeCanvas(p.windowWidth,400)
-    }
-  };
+                  if (!props.isSongStop && !props.isSongPause) {
+                    song.play()
+                  } else if (!props.isSongStop && props.isSongPause) {
+                    song.pause()
+                  } else {
+                    song.stop();
+                     // in case that the song fully stop, the next line delete the current history
+                        MiliSecondsArray= []
+                  }
+                };          
+
+                p.windowResized = function (props) {
+                  if (MiliSecondsArray.length > p.windowWidth -70 ) {
+                    MiliSecondsArray.splice(0 ,70 + MiliSecondsArray.length - p.windowWidth)
+                  }
+                  if (props.isFullSize){
+                p.resizeCanvas(p.windowWidth, p.windowHeight); 
+                  } else {
+                    p.resizeCanvas(p.windowWidth,400)
+                  }
+                };
+
 
  p.setup = function() {
    p.createCanvas(p.windowWidth, 400);
+// sliders can be adjust everything that running in the canvas, the song-pan or background colour...
    sliderRed = p.createSlider(0, 255, 100);
    sliderGreen = p.createSlider(0, 255, 0);
    sliderBlue = p.createSlider(0, 255, 255);
-
-   button = p.createButton('start/stop');
-   button.mousePressed(toggleSong);
-   //in this example the data that insert to the array its the amp, not nessecary!
+    //in this example the data that insert to the array and triger the draw, its the amp, not nessecary!
     amp = new p5.Amplitude()
 }
 
  p.draw = function() {
-         // setting dinamic background when music played, i know its very basic, but its for start :) (using UnSplash API?)
     const r = sliderRed.value();
     const g = sliderGreen.value();
     const b = sliderBlue.value();
