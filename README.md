@@ -15,15 +15,16 @@ The applications could be :
 ## Technology/Stack:
 Is being defined.  
 
-* React and Redux
-* CSS3 Flexbox & Grid System
-* Javascript
-* P5 ?
-* Soundcloud
-* Figma to design the UI interface?
+The idea is to combine:
+* React
+* p5
+* Soundcloud API
+
+* Figma to design the UI interface
 
 Potential Add-On:
 * [StoryBook](https://storybook.js.org/) Will let us test components individually
+* [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper)
 
 __Idea:__ Stream Soundcloud music, take the data that we have and process it through p5.js. 
 
@@ -34,26 +35,8 @@ https://codepen.io/DonKarlssonSan/pen/bdNBMz
 https://www.reddit.com/r/visualization/comments/54lxof/soundcloud_music_visualizer/        
 
 ### Challenges to solve to define tech/stack
-#### Data limit of server if uploading MP3: 
-> How to upload MP3 and process it. If we allow people to just upload mp3s, and add it to some asset folder, will it just forever buildup in our assets folder taking up space and eventually crashing the server when we exceed the memory limit?
-
-> Or if someone uploads a particularly large mp3 and blows through the data limit of a server, or if there are multiple people uploading files, etc, how do we handle that? 
-
-* https://www.npmjs.com/package/localforage ?                 
-
-#### Browser implementation of HTML5 APIs
-HTML5 provides interesting APIs that could do the job for the project, but there might be browser implementation issues, it seems to work best with Chrome, and we wish that our app can be accessed from most modern browser as possible :                
-* HTML5 File System API: https://code.tutsplus.com/tutorials/toying-with-the-html5-file-system-api--net-24719              
-* HTML5 Web Audio API: https://www.html5rocks.com/en/tutorials/webaudio/intro/            
-* https://www.html5rocks.com/en/tutorials/getusermedia/intro/               
-* https://caniuse.com/#search=web%20audio%20api               
-* https://www.youtube.com/watch?v=xmGv_Schm5U                          
-
-This is the solution chosen in Preziotte Party Mode: https://github.com/preziotte/party-mode
-along with d3.js: https://d3js.org/
-
 #### Streaming the audio with SoundCloud API:
-Again, browser issues are reported in the https://github.com/michaelbromley/soundcloud-visualizer README:
+Browser issues are reported in the https://github.com/michaelbromley/soundcloud-visualizer README:
 > Since the web audio API is pretty new, browser support is patchy:
 > * Chrome Latest versions works well, that's what I've been building in.
 > * Firefox This should work, since it has supported web audio since version 25, but in my tests the audio fails to play. Any suggestions?
