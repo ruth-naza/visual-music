@@ -36,6 +36,45 @@ The above is to ensure, everyone has the chance to get involved without waiting 
 
 Please also note we have a [code of conduct](https://github.com/zero-to-mastery/visual-music/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
+
+## DEV-TALK
+### THINK IN COMPONENTS
+this app using React as frameWork, Figma for desigen, and react-p5-wrapper npm package for music visualization.
+those three tools are adjust for working in Componets.
+so think in components as well. 
+don't over write in one page, think what you can export as unit and import elsewhere.
+example of a basic page based components use those three tools:
+
+                  {
+                  	import React from 'react';
+                    import P5Wrapper from 'react-p5-wrapper';
+                    import sketch from '~/sketch';
+                    import FigmaComponent from '~/FigmaComponent.svg';
+
+                    export default function BasicExample() {
+                        	return( <div>
+		                 		<P5Wrapper sketch={sketch}/>
+		                 		<img src={FigmaComponent}/>
+		                 		     </div>)
+                                     }
+                  }
+
+### RUNNING AT YOUR LOCAL-HOST
+<!-- *____AFTER ADDING REACT____*
+1. fork this repo to your own gitHub account (optional)
+2. clone this repo
+3. $ cd visual-music
+4. $ npm install
+5. $ npm start
+ -->
+*____UNTIL ADDING REACT____*
+1. fork this repo to your own gitHub account (optional)
+2. clone this repo
+3. open 'Web server for Chrome' chrome extension
+4. open visual-music folder in the POP-UP
+5. click on the local host adress beneath the folder-route in the POP-UP, you should get by defualt index.html file. if not, make sure that the fourth mark is marked in the POP-UP
+
+
 ## Visual Music Process
 ### REFERENCE
 Infos on technology and timeline, useful references for the team.
