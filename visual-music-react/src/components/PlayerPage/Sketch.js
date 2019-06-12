@@ -1,8 +1,6 @@
 // this canvas its only an example! some of the elemets here will probably stay and more important, like the
 // full-size functionality or the point of pushing every miliSecond arg to an array,
 // but the style, the shape of the draw etc are just v0.0.1 ...
-
-
 import React from 'react'
 import octuopus from './OctopusGarden.mp3'
 import 'p5/lib/addons/p5.sound';
@@ -18,32 +16,24 @@ let song;
 let sliderRed;
 let sliderGreen;
 let sliderBlue;
-let button;
 let amp;
 
 p.preload = function() {
   song = p.loadSound(octuopus);
    }    
   // those functions are for rerender as the things happen in the app, the setup and draw vanila p5.js functions are next               
-
                  // this awfull name its according to react-p5-wrapper docs :/
                p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-                  if (props.isFullSize){
-               p.resizeCanvas(p.windowWidth, p.windowHeight); 
-                  } else {
-                    p.resizeCanvas(p.windowWidth,400)
-                  }        
-
-                  if (!props.isSongStop && !props.isSongPause) {
+                {props.isFullSize ?   p.resizeCanvas(p.windowWidth, p.windowHeight) :  p.resizeCanvas(p.windowWidth,400)}
+                   if (!props.isSongStop && !props.isSongPause && !song.isPlaying()) {
                     song.play()
                   } else if (!props.isSongStop && props.isSongPause) {
                     song.pause()
-                  } else {
+                  } else if (props.isSongStop) {
                     song.stop();
-                     // in case that the song fully stop, the next line delete the current history
-                        MiliSecondsArray= []
-                  }
-                };          
+                    MiliSecondsArray= []
+                  } }
+                 
 
                 p.windowResized = function (props) {
                   if (MiliSecondsArray.length > p.windowWidth -70 ) {
