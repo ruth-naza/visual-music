@@ -7,6 +7,7 @@ Does the project appeal to you? Contact us on Discord and we'll provide the link
 Team Lead:     
 * Lead: [lucierabahi](https://github.com/lucierabahi)
 * Tech Advisor: [justinwlin](https://github.com/justinwlin)
+* Front end Lead: [YogiHa](https://github.com/YogiHa)
 * Design Lead: ?                          
 *that would ensure the design of the graphical charter, and its respect thereafter*
 * QA Lead: ?                      
