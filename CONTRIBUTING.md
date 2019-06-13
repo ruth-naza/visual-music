@@ -7,6 +7,7 @@ Does the project appeal to you? Contact us on Discord and we'll provide the link
 Team Lead:     
 * Lead: [lucierabahi](https://github.com/lucierabahi)
 * Tech Advisor: [justinwlin](https://github.com/justinwlin)
+* Front end Lead: [YogiHa](https://github.com/YogiHa)
 * Design Lead: ?                          
 *that would ensure the design of the graphical charter, and its respect thereafter*
 * QA Lead: ?                      
@@ -58,7 +59,7 @@ NOTE: Always create a new branch when working on a task!
 This is where tasks are placed whilst the PR has been submitted and is awaiting approval. Once the code has been reviewed, it will be merged and the card can be archived.
 
 
-## CONTRIBUTING
+## Contributing
 We use Trello for task management. If you want to contribute, contact a project admin through Discord (we have a dedicated channel for the project __#visual-music__), an invitation to join the team on Trello we'll be given to you. Feel free to write the team some lines so the contributors get to know each other, add your name on the CONTRIBUTORS.md list and... you're good to go! 
 
 ## Working on Code
@@ -67,6 +68,25 @@ We use Trello for task management. If you want to contribute, contact a project 
 * If you want to work on an ongoing task, get permission from the person whose task is assigned to
 * Start a new branch or fork and start coding
 * Always let others in Discord know what you are working on
+
+### Tip: think in components
+The application will be developed using the React library, Figma for design and p5 for music visualization. It is suitable to think in components, meaning small units with precise functionalities that are reusable.     
+
+Example of a basic page, based on components, using those three tools:
+
+                  {
+                  	import React from 'react';
+                    import P5Wrapper from 'react-p5-wrapper';
+                    import sketch from '~/sketch';
+                    import FigmaComponent from '~/FigmaComponent.svg';
+
+                    export default function BasicExample() {
+                        	return( <div>
+		                 		<P5Wrapper sketch={sketch}/>
+		                 		<img src={FigmaComponent}/>
+		                 		     </div>)
+                                     }
+                  }
 
 ## Adding Library
 If you have any library that you want to use, please discuss it with the team first, as we want to avoid using different libraries that do the same thing.
