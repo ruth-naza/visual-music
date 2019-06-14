@@ -8,6 +8,7 @@ import * as p5 from 'p5';
 // where is thie 'p' coming from? thank to react-p5-wrapper package we able to use p5.js syntax such preload or createCanvas, with tha addition of p.
 export default function sketch(p) {
 let shouldIPlay = false;
+let shouldIDraw = false;
 // creating emptey array, each milisecond in the audio should send arguement to here 
 let MiliSecondsArray = [];
 let song;
@@ -16,9 +17,13 @@ let sliderGreen;
 let sliderBlue;
 let amp;
 
+// before there's a loaded song shouldIPlay = false, and after importing the first song turns to true. that equl to preload p5 method, but with option for dynamic prop song
 const setShouldIPlay = () => {
   shouldIPlay = true
    }    
+const setShouldIDraw = boolean => {
+  shouldIDraw = boolean
+}
  // those two functions below are for rerender as things happen in the app, the setup and draw vanila p5.js functions are next (adjust to the wrapper with p.)              
        
                  // this function re-render everytime that something in the props change, because of that all of the 'if' cases...
@@ -27,16 +32,19 @@ const setShouldIPlay = () => {
                 {props.isFullSize ?   p.resizeCanvas(p.windowWidth, p.windowHeight) :  p.resizeCanvas(p.windowWidth,400)};
                  if (shouldIPlay){
                     if (!props.isSongStop && !props.isSongPause && !song.isPlaying()) {
+                     setShouldIDraw(true)
                      song.play()
                    } else if (!props.isSongStop && props.isSongPause) {
                      song.pause()
                    } else if (props.isSongStop) {
                      song.stop();
+                     setShouldIDraw(false);
                      MiliSecondsArray= []
                               }}
                    if (props.isNewSong) {
                     song = p.loadSound(props.song);
-                    setShouldIPlay()  }
+                    setShouldIPlay()
+                     }
                    }
             
             p.windowResized = function (props) {
@@ -53,7 +61,7 @@ const setShouldIPlay = () => {
    sliderRed = p.createSlider(0, 255, 100);
    sliderGreen = p.createSlider(0, 255, 0);
    sliderBlue = p.createSlider(0, 255, 255);
-    //in this example the data that insert to the array and triger the draw, its the amp, not nessecary!
+    //in this example the data that insert to the array and triger the lines draw, its the amp, not nessecary! (both amp and lines...)
     amp = new p5.Amplitude()
 }
 
@@ -64,10 +72,11 @@ const setShouldIPlay = () => {
     p.background(r, g, b);
 
   if (shouldIPlay){
-  if (song.isPlaying()) {
-          // the 3 lines, check each line y p.height 
-     let vol = amp.getLevel();
-    MiliSecondsArray.push(vol);
+    if(shouldIDraw){
+          if(song.isPlaying()){
+             let vol = amp.getLevel();
+             MiliSecondsArray.push(vol);
+          }
     p.stroke(255);
     p.noFill();
     p.beginShape(); 
@@ -99,6 +108,6 @@ const setShouldIPlay = () => {
     }
     p.stroke(0, 255 ,255);
     p.line(MiliSecondsArray.length, 0, MiliSecondsArray.length, p.height)
-  } }
+  } } 
 }
 }

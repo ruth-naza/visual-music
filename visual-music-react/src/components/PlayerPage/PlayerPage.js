@@ -19,8 +19,9 @@ export default function PlayerPage({ setRoute }) {
 // right now, there is only local music, and becuase of that the first useEffect function insert the first item into the songArray,
 // but after receving API music in nextSong function, even the first song will get into the second useEffect function, and we'll delete the first one (or triger the first API call if needed...)
 useEffect(() => {
-      let newArray = [ rings ]
-      setSongArray(newArray) 
+      let newArray = [ rings ];
+      setSongArray(newArray);
+      return () => console.log
        },
 [])
 
