@@ -3,7 +3,7 @@ import './LandingPage.css';
 
 export default function LandingPage({setRoute}){
   return(
-   <div className="App is-preload">
+   <div className="is-preload">
         <div id="page-wrapper">
         <div id="wrapper">
   
