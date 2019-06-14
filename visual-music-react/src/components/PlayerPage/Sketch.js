@@ -16,13 +16,14 @@ let sliderGreen;
 let sliderBlue;
 let amp;
 
-const setShouldIPlay =() => {
+const setShouldIPlay = () => {
   shouldIPlay = true
-
    }    
-  // those functions are for rerender as the things happen in the app, the setup and draw vanila p5.js functions are next               
-                 // this awfull name its according to react-p5-wrapper docs :/
-               p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+ // those two functions below are for rerender as things happen in the app, the setup and draw vanila p5.js functions are next (adjust to the wrapper with p.)              
+       
+                 // this function re-render everytime that something in the props change, because of that all of the 'if' cases...
+                  // this awfull name its according to react-p5-wrapper docs :/
+            p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
                 {props.isFullSize ?   p.resizeCanvas(p.windowWidth, p.windowHeight) :  p.resizeCanvas(p.windowWidth,400)};
                  if (shouldIPlay){
                     if (!props.isSongStop && !props.isSongPause && !song.isPlaying()) {
@@ -37,9 +38,8 @@ const setShouldIPlay =() => {
                     song = p.loadSound(props.song);
                     setShouldIPlay()  }
                    }
-                 
-
-                p.windowResized = function (props) {
+            
+            p.windowResized = function (props) {
                   if (MiliSecondsArray.length > p.windowWidth -70 ) {
                     MiliSecondsArray.splice(0 ,70 + MiliSecondsArray.length - p.windowWidth)
                   }
@@ -47,10 +47,9 @@ const setShouldIPlay =() => {
 
                 };
 
-
  p.setup = function() {
    p.createCanvas(p.windowWidth, 400);
-// sliders can be adjust everything that running in the canvas, the song-pan or background colour...
+// sliders can be adjust everything (!!) that running in the canvas, the song-pan, background colour etc... for the example i gave the sliders collor prop
    sliderRed = p.createSlider(0, 255, 100);
    sliderGreen = p.createSlider(0, 255, 0);
    sliderBlue = p.createSlider(0, 255, 255);
@@ -66,7 +65,7 @@ const setShouldIPlay =() => {
 
   if (shouldIPlay){
   if (song.isPlaying()) {
-          // the 3 lines, check y p.height 
+          // the 3 lines, check each line y p.height 
      let vol = amp.getLevel();
     MiliSecondsArray.push(vol);
     p.stroke(255);
@@ -93,6 +92,7 @@ const setShouldIPlay =() => {
         p.vertex(i, y);
     }
     p.endShape();
+    
         // the margin-end of the blue line is 70
     if (MiliSecondsArray.length > p.windowWidth - 70) {
       MiliSecondsArray.splice(0 ,1)

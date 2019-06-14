@@ -8,36 +8,45 @@ import './PlayerPage.css';
 
 export default function PlayerPage({ setRoute }) {
   const [song, setSong] = useState(null);
-  const [isNewSong, setIsNewSong] = useState(false)
+  const [songArray, setSongArray] = useState([]);
+  const [isNewSong, setIsNewSong] = useState(false);
   const [isSongStop, setIsSongStop] = useState(true);
   const [isSongPause, setIsSongPause] = useState(false);
   const [isFullSize, setIsFullSize] = useState(false);
-// useEffect its React hooks equl to ComponentDidMount() (and some more... :) )
-// the empty brackets in the end of the function holds the triger for re-render the effect.
-// right now, there's only local music so the effect need to be render only at the first-render path (there no mp3 import at Sketch.js),
-// but after getting API output, a arguement in this brackets will triger the effect every new song, and we will be able to rid of toglleSong()
-//  that made for local music purpuse and for figuering how draw diffrent song on the sketch and send dynamic song into the useEffect function
+// useEffect its React hooks equl to ComponentDidMount() and ComponentDidUpdate() (and actually so much more... :) )
+// the brackets in the end of the function holds the triger for re-render the effect. in our case it's every time that the songArray updtae,
+// the useEffect set the 'song' state to the last song in the array, and changing 'isNewSong' state to 'true' for re-active the Sketch ('isNewSong' turns back false when song start play...)  
+// right now, there is only local music, and becuase of that the first useEffect function insert the first item into the songArray,
+// but after receving API music in nextSong function, even the first song will get into the second useEffect function, and we'll delete the first one (or triger the first API call if needed...)
+useEffect(() => {
+      let newArray = [ rings ]
+      setSongArray(newArray) 
+       },
+[])
+
 useEffect(() =>{
-  setSong(octuopus);
-  setIsSongStop(true);
-  setIsNewSong(true);
-  setIsSongPause(false)
-  return () => console.log }
-   , [])
+      setSong(songArray[songArray.length -1])
+      setIsSongStop(true);
+      setIsSongPause(false);
+      setIsNewSong(true);
+      return () => console.log 
+    },
+ [songArray])
 
 
-  const toggleSong = () => {
-    setIsSongStop(true);
+  const nextSong = () => {     
     if (song === octuopus) {
-      setSong(rings)
+      let newArray = [...songArray, rings]
+      setSongArray(newArray)
     } else {
-      setSong(octuopus)
+      let newArray = [...songArray, octuopus]
+      setSongArray(newArray)
     }
-    setIsNewSong(true);
-    setIsSongPause(false)
   }
 
-	return ( <div className="App">
+
+	return ( 
+           <div>
            <div className="container">
         	 <div id="functionalities">
               <h1>Visual Music</h1>
@@ -46,11 +55,11 @@ useEffect(() =>{
               </div>
               <div className="row" id="row2">
                   <button onClick={()=>setRoute('landingPage')} id="upload">Back to home</button>
-                  <button onClick={() => toggleSong()} id="upload">Switch-Song</button>
+                  <button onClick={() => nextSong()} id="upload">Switch-Song</button>
              </div>
                <button onClick={()=>setIsFullSize(!isFullSize)}> full-size </button>
             </div>
-             <div className="p5center">
+             <div>
             <P5Wrapper sketch={sketch} song={song} isNewSong={isNewSong} isFullSize={isFullSize} isSongStop={isSongStop} isSongPause={isSongPause}/></div>
           </div>
           <ButtonsBar setIsSongStop={setIsSongStop} setIsSongPause={setIsSongPause} setIsNewSong={setIsNewSong} isFullSize={isFullSize} />
