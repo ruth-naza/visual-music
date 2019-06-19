@@ -13,38 +13,33 @@ The applications could be :
 * tool or interesting experiment for musicologists, linguists, scientists, etc.
 
 ## Technology/Stack:
-Is being defined.  
+Is being defined. We need to find an API that would allow us to stream songs in our app, and from which we could grab data in a suitable way for analysis and conversion into visual output using p5.
 
-The idea is to combine:
+The idea was to combine:
 * React
 * p5
-* Soundcloud API
+* Soundcloud API    
 
+===>__SoundCloud API is no longer available, we have to search for another option__        
 * Figma to design the UI interface
 
 Potential Add-On:
 * [StoryBook](https://storybook.js.org/) Will let us test components individually
 * [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper)
 
-__Idea:__ Stream Soundcloud music, take the data that we have and process it through p5.js. 
+__Idea:__ Stream music from an API, take the data that we have and process it through p5.js. 
 
-The readme of that project [soundcloud-visualizer](https://github.com/michaelbromley/soundcloud-visualizer) is a good explanation: Soundcloud sends 2 variables, that can be parsed to create a visualization based on those.
+The readme of that project [soundcloud-visualizer](https://github.com/michaelbromley/soundcloud-visualizer) is a good explanation when using SoundCloud, which sends 2 variables, that can be parsed to create a visualization based on those.
 
 __Examples of Soundcloud implementations:__            
 https://codepen.io/DonKarlssonSan/pen/bdNBMz                
 https://www.reddit.com/r/visualization/comments/54lxof/soundcloud_music_visualizer/        
 
 ### Challenges to solve to define tech/stack
-#### Streaming the audio with SoundCloud API:
-Browser issues are reported in the https://github.com/michaelbromley/soundcloud-visualizer README:
-> Since the web audio API is pretty new, browser support is patchy:
-> * Chrome Latest versions works well, that's what I've been building in.
-> * Firefox This should work, since it has supported web audio since version 25, but in my tests the audio fails to play. Any suggestions?
-> * Safari I haven't tested it since I'm stuck with the dead Windows version, but I guess it should work since it's WebKit.
-> * IE Nope.
-> * Opera Not tested but maybe now that they switched to WebKit.
-
-### Potential solution:
+#### Finding a suitable API
+#### Checking potential browser implementation issues
+#### How to analyse data and output visual:
+Again, with Soundcloud, we were thinking of:
 [React Native Soundcloud Streaming App Tutorial, part 2](https://www.youtube.com/watch?v=Fcf-tgSI3x0)
 
 Seems like we can take waveform data we receive about a song and turn it into a drawing through some interpretation of the waveforms. 
@@ -68,7 +63,7 @@ We'll need to figure out how to play music + do visualization at the same time.
 * 2 pages:
   * landing page
   * player page
-* Soundcloud streaming
+* ?API? streaming
 * Play/Stand-By
 * Export and download screen capture
 * One main theme for visual transcribe
