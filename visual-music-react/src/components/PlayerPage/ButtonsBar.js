@@ -1,9 +1,8 @@
 import React from 'react';
-import Play from '../../figma/play.svg';
-import Stop from '../../figma/stop.svg';
-import Pause from '../../figma/pause.svg'
-// i put very-basic figma buttons and copy beneath the buttons that was alredy... 
-// anyway its not for being shiny right now, more about orginzing some tech-env
+import Play from '../../figma/buttons/play.svg';
+import Stop from '../../figma/buttons/stop.svg';
+import Pause from '../../figma/buttons/pause.svg'
+
 export default function ButtonsBar({setSongStatus, setIsNewSong, isFullSize}) {
 
 const footerStyle = {

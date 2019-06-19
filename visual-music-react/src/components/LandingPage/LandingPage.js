@@ -7,7 +7,7 @@ export default function LandingPage({setRoute}){
         <div id="page-wrapper">
         <div id="wrapper">
   
-          <section className="panel banner right">
+          <section className="panel banner right scrolled">
             <div className="content color0 span-3-75">
               <h1 className="major">Visual<br />
               Music</h1>
@@ -84,8 +84,7 @@ export default function LandingPage({setRoute}){
               </div>
             </div>
           </section>
-  
-        </div>
+          </div>
       </div>
-  
-      </div>)}
+      </div>)
+     }

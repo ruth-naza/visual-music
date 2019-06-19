@@ -81,12 +81,13 @@ Example of a basic page, based on components, using those three tools:
                     import FigmaComponent from '~/FigmaComponent.svg';
 
                     export default function BasicExample() {
-                        	return( <div>
-		                 		<P5Wrapper sketch={sketch}/>
-		                 		<img src={FigmaComponent}/>
-		                 		     </div>)
+                        	return( 
+                            <div>
+		                 	      	<P5Wrapper sketch={sketch}/>
+		                 	      	<img src={FigmaComponent}/>
+		                 		   </div>)
                                      }
-                  }
+                            }
 
 ## Adding Library
 If you have any library that you want to use, please discuss it with the team first, as we want to avoid using different libraries that do the same thing.

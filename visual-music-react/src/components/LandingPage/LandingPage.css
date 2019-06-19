@@ -3666,3 +3666,7 @@ input, select, textarea {
 
   }
   
+  .scrolled {
+    overflow: auto;
+  white-space: nowrap;
+  }

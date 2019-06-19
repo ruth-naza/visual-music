@@ -7,10 +7,10 @@ let shouldIPlay = false;
 let shouldIDraw = false;
 let MiliSecondsArray = [];
 let song;
-let sliderRed;
-let sliderGreen;
-let sliderBlue;
 let amp;
+let bg = (0);
+let offsetX = 0;
+
 
 const setShouldIPlay = () => {
   shouldIPlay = true
@@ -19,8 +19,11 @@ const setShouldIDraw = boolean => {
   shouldIDraw = boolean
 }
             p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-                {props.isFullSize ?   p.resizeCanvas(p.windowWidth, p.windowHeight) :  p.resizeCanvas(p.windowWidth,400)};
-                 if (shouldIPlay){
+                {props.isFullSize ?   p.resizeCanvas(p.width, p.windowHeight) :  p.resizeCanvas(p.width,400)};
+                if (props.canvasBG) {
+                 bg = p.loadImage(props.canvasBG)
+               }
+                if (shouldIPlay){
                     if (props.songStatus === 'play' && !song.isPlaying()) {
                      setShouldIDraw(true)
                      song.play()
@@ -31,39 +34,39 @@ const setShouldIDraw = boolean => {
                      setShouldIDraw(false);
                      MiliSecondsArray= []
                               }}
+
                    if (props.isNewSong) {
                     song = p.loadSound(props.song);
                     setShouldIPlay()
                      }
+
                    }
-            
-            p.windowResized = function (props) {
+                           
+            p.windowResized = function () {
                   p.resizeCanvas(p.windowWidth,p.height)
                 };
 
  p.setup = function() {
    p.createCanvas(p.windowWidth, 400);
-   sliderRed = p.createSlider(0, 255, 100);
-   sliderGreen = p.createSlider(0, 255, 0);
-   sliderBlue = p.createSlider(0, 255, 255);
-    amp = new p5.Amplitude()
-}
+    amp = new p5.Amplitude();
+  }
+
+ p.mouseDragged = function() {
+    offsetX += (p.mouseX - p.pmouseX)/3;
+  }
 
  p.draw = function() {
-    const r = sliderRed.value();
-    const g = sliderGreen.value();
-    const b = sliderBlue.value();
-    p.background(r, g, b);
+    p.background(bg);
     if (MiliSecondsArray.length > p.windowWidth - 70) {
-        p.translate(-MiliSecondsArray.length - 70 + p.windowWidth , 0);
-      }
+        p.translate(-MiliSecondsArray.length - 70 + p.windowWidth + 2 * offsetX , 0);
+       }
   if (shouldIPlay){
-      if(shouldIDraw){
-          if(song.isPlaying()){
+   if(shouldIDraw){
+    if(song.isPlaying()){
              let vol = amp.getLevel();
              MiliSecondsArray.push(vol);
           }
-    p.stroke(255);
+    p.stroke(255, 0 , 255);
     p.noFill();
     p.beginShape(); 
     for (let i = 0; i< MiliSecondsArray.length; i++) {
@@ -79,7 +82,7 @@ const setShouldIDraw = boolean => {
         p.vertex(i, y);
     }
     p.endShape();
-    p.stroke(255);
+    p.stroke(190, 255 , 0);
     p.noFill();
     p.beginShape(); 
     for (let i = 0; i< MiliSecondsArray.length; i++) {
@@ -90,6 +93,7 @@ const setShouldIDraw = boolean => {
     p.stroke(0, 255 ,255);
     p.line(MiliSecondsArray.length, 0, MiliSecondsArray.length, p.height);
  
-  } } 
+  } 
+ }
 }
 }
