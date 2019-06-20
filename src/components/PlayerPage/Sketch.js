@@ -3,48 +3,40 @@ import 'p5/lib/addons/p5.dom';
 import * as p5 from 'p5';
 
 export default function sketch(p) {
+
 let shouldIPlay = false;
-let shouldIDraw = false;
 let MiliSecondsArray = [];
 let song;
 let amp;
 let bg = (0);
 let offsetX = 0;
 
-
 const setShouldIPlay = () => {
   shouldIPlay = true
    }    
-const setShouldIDraw = boolean => {
-  shouldIDraw = boolean
-}
-            p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-                {props.isFullSize ?   p.resizeCanvas(p.width, p.windowHeight) :  p.resizeCanvas(p.width,400)};
-                if (props.canvasBG) {
-                 bg = p.loadImage(props.canvasBG)
-               }
-                if (shouldIPlay){
-                    if (props.songStatus === 'play' && !song.isPlaying()) {
-                     setShouldIDraw(true)
-                     song.play()
-                   } else if (props.songStatus === 'pause') {
-                     song.pause()
-                   } else if (props.songStatus === 'stop') {
-                     song.stop();
-                     setShouldIDraw(false);
-                     MiliSecondsArray= []
-                              }}
 
-                   if (props.isNewSong) {
-                    song = p.loadSound(props.song);
-                    setShouldIPlay()
-                     }
 
-                   }
+p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+     {props.isFullSize ?   p.resizeCanvas(p.width, p.windowHeight) :  p.resizeCanvas(p.width,400)};
+     bg = p.loadImage(props.canvasBG);
+     if (shouldIPlay){
+         if (props.songStatus === 'play' && !song.isPlaying()) {
+          song.play()
+        } else if (props.songStatus === 'pause') {
+          song.pause()
+        } else if (props.songStatus === 'stop') {
+          song.stop();
+          MiliSecondsArray= []
+                   }}
+        if (props.isNewSong) {
+         song = p.loadSound(props.song);
+         setShouldIPlay()
+          }
+    }
                            
-            p.windowResized = function () {
-                  p.resizeCanvas(p.windowWidth,p.height)
-                };
+p.windowResized = function () {
+      p.resizeCanvas(p.windowWidth,p.height)
+    }
 
  p.setup = function() {
    p.createCanvas(p.windowWidth, 400);
@@ -55,13 +47,19 @@ const setShouldIDraw = boolean => {
     offsetX += (p.mouseX - p.pmouseX)/3;
   }
 
+p.mouseWheel = function(event) {
+  p.print(event.delta);
+  offsetX += event.delta;
+  console.log(offsetX)
+  return false;
+}
+
  p.draw = function() {
     p.background(bg);
     if (MiliSecondsArray.length > p.windowWidth - 70) {
         p.translate(-MiliSecondsArray.length - 70 + p.windowWidth + 2 * offsetX , 0);
-       }
+       } else { offsetX = 0 }
   if (shouldIPlay){
-   if(shouldIDraw){
     if(song.isPlaying()){
              let vol = amp.getLevel();
              MiliSecondsArray.push(vol);
@@ -92,8 +90,6 @@ const setShouldIDraw = boolean => {
     p.endShape();
     p.stroke(0, 255 ,255);
     p.line(MiliSecondsArray.length, 0, MiliSecondsArray.length, p.height);
- 
-  } 
- }
-}
+   } 
+  }
 }

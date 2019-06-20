@@ -17,7 +17,7 @@ Is being defined. We need to find an API that would allow us to stream songs in 
 
 The idea was to combine:
 * React
-* p5
+* p5 (adjust thanks to [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper))
 * Soundcloud API    
 
 ===>__SoundCloud API is no longer available, we have to search for another option__        
@@ -25,7 +25,6 @@ The idea was to combine:
 
 Potential Add-On:
 * [StoryBook](https://storybook.js.org/) Will let us test components individually
-* [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper)
 
 __Idea:__ Stream music from an API, take the data that we have and process it through p5.js. 
 
