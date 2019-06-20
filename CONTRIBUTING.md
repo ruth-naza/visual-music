@@ -88,6 +88,22 @@ Example of a basic page, based on components, using those three tools:
                                      }
                             }
 
+### running on your own local machine
+for zero configuration, the backend of this app running under docker-compose container,
+for install - * https://docs.docker.com/compose/install/
+
+after installing and cloning the repo -
+
+1. $ cd visual-music/server
+   $ npm install
+   $ docker-compose up
+
+2. in new terminal -
+
+   $ cd visual-music
+   $ npm install
+   $ npm start
+
 ## Adding Library
 If you have any library that you want to use, please discuss it with the team first, as we want to avoid using different libraries that do the same thing.
 

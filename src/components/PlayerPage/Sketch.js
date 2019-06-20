@@ -34,7 +34,7 @@ p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
           }
     }
                            
-p.windowResized = function () {
+ p.windowResized = function () {
       p.resizeCanvas(p.windowWidth,p.height)
     }
 
@@ -47,12 +47,11 @@ p.windowResized = function () {
     offsetX += (p.mouseX - p.pmouseX)/3;
   }
 
-p.mouseWheel = function(event) {
+ p.mouseWheel = function(event) {
   p.print(event.delta);
-  offsetX += event.delta;
-  console.log(offsetX)
+  offsetX += event.delta/3;
   return false;
-}
+  }
 
  p.draw = function() {
     p.background(bg);

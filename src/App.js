@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import LandingPage from './components/LandingPage/LandingPage';
 import PlayerPage from './components/PlayerPage/PlayerPage';
+import SignIn from './components/forms/SignIn';
+import Register from './components/forms/Register';
 import './App.css';
 
 function App() {
@@ -12,7 +14,10 @@ function App() {
     <LandingPage setRoute={setRoute} /> 
     : (route === 'playerPage') ?
     <PlayerPage setRoute={setRoute} />
-    : <div> { 'has been err' } </div>
+    : <div> 
+      <SignIn />
+      <Register />
+     </div>
   } 
       </div> )
 }

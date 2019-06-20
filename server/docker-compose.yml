@@ -1,0 +1,27 @@
+version: '3.6'
+
+services:
+  visual-music-api:
+    container_name: visual-music-backend
+    command: npm start
+    build: ./
+    working_dir: /usr/src/visual-music/server 
+    environment:
+      POSTGRES_URI: postgres://visual-music:postgres@postgres:5432/visual-music-docker
+    links:
+      - postgres
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/visual-music/server
+
+
+  postgres:
+    environment:
+      POSTGRES_USER: visual-music
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: visual-music-docker
+      POSTGRES_HOST: postgres
+    build: ./postgres
+    ports:
+      - "5432"
