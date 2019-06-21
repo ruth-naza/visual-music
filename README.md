@@ -13,44 +13,41 @@ The applications could be :
 * tool or interesting experiment for musicologists, linguists, scientists, etc.
 
 ## Technology/Stack:
-Is being defined. We need to find an API that would allow us to stream songs in our app, and from which we could grab data in a suitable way for analysis and conversion into visual output using p5.
+* [Figma](https://www.figma.com/): to design the UI
+* [Storybook](https://storybook.js.org/): to test and export the components for React
+* [React](https://reactjs.org/): to build the UI
+* [p5](https://p5js.org/): for visualization
+   * using [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper))
+* [Docker](https://www.docker.com/): to run and deploy the app
+* [Travis CI](https://travis-ci.org/): continuous integration service used to build and test projects hosted at GitHub
+  
+__Idea:__ We want to analyse the data from an uploaded mp3 song, and process it through p5.js. We are not building a player, and not building a simple visualizer: we want to think on how to transcribe the music in an artistic way - the emotions, patterns, etc. Challenges have to be solved but it could mean working on rhythms, beats, melodies, frequencies, loops, etc.
 
-The idea was to combine:
-* React
-* p5 (adjust thanks to [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper))
-* Soundcloud API    
+## Current tasks and challenges
+#### Design
+* Design of the app on Figma
+* Create the logo
+* Create "React friendly" components with Storybook
 
-===>__SoundCloud API is no longer available, we have to search for another option__        
-* Figma to design the UI interface
+#### Write documentation and wikis based on the stack
+* Write a PR Guide for contributors
+* Set up the "All-Contributors" on GitHub repo
 
-Potential Add-On:
-* [StoryBook](https://storybook.js.org/) Will let us test components individually
+#### Frontend, DSP, visualization
+* Dive into p5 using a component to output visuals while playing the sound
+* Give user the possibility to export and download the visualization as HD print file.
 
-__Idea:__ Stream music from an API, take the data that we have and process it through p5.js. 
+#### Backend
+* Upload song to Firebase
+* User authentification
+* Remember user on the local/session storage, to prevent re-sign in every refresh.
 
-The readme of that project [soundcloud-visualizer](https://github.com/michaelbromley/soundcloud-visualizer) is a good explanation when using SoundCloud, which sends 2 variables, that can be parsed to create a visualization based on those.
+### Please check the Trello board, as tasks evolve continuously
 
-__Examples of Soundcloud implementations:__            
-https://codepen.io/DonKarlssonSan/pen/bdNBMz                
-https://www.reddit.com/r/visualization/comments/54lxof/soundcloud_music_visualizer/        
-
-### Challenges to solve to define tech/stack
-#### Finding a suitable API
-#### Checking potential browser implementation issues
-#### How to analyse data and output visual:
-Again, with Soundcloud, we were thinking of:
-[React Native Soundcloud Streaming App Tutorial, part 2](https://www.youtube.com/watch?v=Fcf-tgSI3x0)
-
-Seems like we can take waveform data we receive about a song and turn it into a drawing through some interpretation of the waveforms. 
-
-We would need to do some processing before storing it because there will be too many points: we need to divide them into chunks and clean the data / simplify it. 
-
-Probably the first sort of testing for example is: 
-* getting / testing the api for SoundCloud   
-* the next step is subdividing those responses    
-* then afterwards, can we draw with those responses? 
-
-We'll need to figure out how to play music + do visualization at the same time.
+__Miscellaneous questions__
+* How do we receive and parse the data? Can we take waveform data about a song and turn it into a drawing through some interpretation of the waveforms? Else?              
+* What kind of processing would we need to perform? Processing before storing the data because there will be too many points: we probably need to divide them into chunks and clean the data / simplify it.                 
+* How to play music and do visualization at the same time?               
 
 ## Useful Links
 [Zero to Mastery - Guidelines on open source](https://github.com/zero-to-mastery/start-here-guidelines)            
@@ -59,26 +56,25 @@ We'll need to figure out how to play music + do visualization at the same time.
 
 ## Functionalities
 ### Version 1.0
-* 2 pages:
+* Navigation:
   * landing page
+  * registration form
+  * sign in form
   * player page
-* ?API? streaming
 * Play/Stand-By
 * Export and download screen capture
 * One main theme for visual transcribe
-* No registration
+* User registration functionalities
     
 ### Version 2.0
 * New visual themes
-    
-### Version 3.0
-* (User can upload audio files?)
-* (User can input live music?)
+* User can upload other types of audio files?
+* User can input live music?
 
 ## Release & Launch
 Visual Music is being built with the intention of releasing and maintaining the project in the real world. Therefore providing contributors with a great opportunity to expand on and learn new skills, being part of a project that can be included on resumes and showed off to friends, family and potential employers.
 
-Should be discussed and decided by the team in charge when constituted...
+A survey for team members is on the Trello board to discuss where and how the app should be released.
 * ZTM Discord
 * LinkedIn
 * ...
