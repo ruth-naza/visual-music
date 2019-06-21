@@ -136,7 +136,9 @@ If you have any library that you want to use, please discuss it with the team fi
   * https://www.learnstorybook.com/      
 * [React](https://reactjs.org/)          
   * https://reactjs.org/tutorial/tutorial.html         
-  * https://reactjs.org/community/courses.html            
+  * https://reactjs.org/community/courses.html   
+* [Docker](https://www.docker.com/)      
+  * https://www.youtube.com/watch?v=C6LtRb1OJuw&app=desktop        
  
 ## Miscellaneous
 ### Digital Signal Processing theory:
