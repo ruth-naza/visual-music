@@ -17,3 +17,6 @@
 [plaza223](https://github.com/plata223)
 
 [balagotb](https://github.com/balagotb)
+
+[ruth-naza](https://github.com/ruth-naza)
+
