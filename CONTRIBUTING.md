@@ -8,26 +8,17 @@ Team Lead:
 * Lead: [lucierabahi](https://github.com/lucierabahi)
 * Tech Advisor: [justinwlin](https://github.com/justinwlin)
 * Frontend Lead: [YogiHa](https://github.com/YogiHa)
-* Design Lead: [abneha04](https://github.com/abneha04)                      
+* Design Lead: [abneha04](https://github.com/abneha04)   
+* Backend Lead: ?      
 * QA Lead: ?                      
 *quality insurance: to check the code for issues before a PR can be merged*
 
 __We recognize all contributors__
 Contributions can be:
-* answering questions
-* bug reports
-* code
-* documentation
-* content
-* design
-* PR reviews 
-* ideas & planning
-* translation
-* tests
-* tutorials
-* etc.
+Answering questions, bug reports, code, documentation, content, design, PR reviews, ideas & planning, translation, tests, tutorials, etc.     
 
-When contributing to this repository, check the Trello board for available tasks. If the task is:
+### When contributing to this repository, check the Trello board for available tasks.    
+### If the task is:
 * __Available__: Go ahead and *claim the task*, and proceed to work on a PR
 * __Claimed__: If someone else has claimed the task, speak with them or one of the project admin. *PRs will only be accepted from the person that claimed that task.*
 * __Non-Existant__: If the feature does not appear on trello, *discuss it on Discord or speak with a project admin*.
@@ -88,41 +79,72 @@ Example of a basic page, based on components, using those three tools:
                                      }
                             }
 
+### Running the project on your local machine
+To avoid complex configuration, the backend of our application is running under Docker Compose.
+Installation:           
+https://docs.docker.com/compose/install/
+
+after installing and cloning the repo -
+
+1. On the terminal:  
+   $ cd visual-music/server     
+
+   $ npm install     
+
+   $ docker-compose up       
+
+2. In a new terminal:                    
+
+   $ cd visual-music  
+
+   $ npm install     
+   
+   $ npm start  
+ 
 ## Adding Library
 If you have any library that you want to use, please discuss it with the team first, as we want to avoid using different libraries that do the same thing.
 
 # Resources
-## Similar projects
-* https://github.com/preziotte/party-mode
-* https://github.com/ashinzekene/react-music-player
-
-## Soundcloud Audio Visualizer Processors:
-* https://codepen.io/DonKarlssonSan/pen/bdNBMz             
-* https://www.reddit.com/r/visualization/comments/54lxof/soundcloud_music_visualizer/                 
-* https://github.com/michaelbromley/soundcloud-visualizer 
-
 ## p5.js for music visualization examples: 
 * https://www.youtube.com/watch?v=2O3nm0Nvbi4
 * https://www.youtube.com/watch?v=jEwAMgcCgOA
 * [How to save frames in p5](http://p5js.org/reference/#/p5/saveFrames)
 
+## Similar projects
+* [Preziotte Party Mode](https://preziotte.com/partymode/)        
+  * GitHub repo: https://github.com/preziotte/party-mode           
+* [React music player](https://ashinzekene.github.io/react-music-player/)        
+  * GitHub repo: https://github.com/ashinzekene/react-music-player       
+* [Poibella SoundCloud visualizer](http://poibella.org/viz2/soundcloudvision/)   
+  * GitHub repo: https://github.com/sfmiller940/soundcloudvision    
+  
+## Released Music Visualizers
+[Mazetools Soniface](https://www.mazetools.com/)        
+[Harmogram](https://harmogram.com/)       
+[Dadim](https://do.adive.in/music/99)    
+
 ## Technology / Stack
 * [Using p5 with React](https://discourse.processing.org/t/using-react-with-p5-js-es6-support/3298)
-* [Figma](https://www.figma.com/) - probably need to design the UI interface first and plan out the data transfers after
-* [p5.js](http://p5js.org/)
-* [Storybook](https://storybook.js.org/)
-* [React](https://reactjs.org/)
-
+* [Figma](https://www.figma.com/) 
+  * https://www.youtube.com/watch?v=PaPIsyO1t3Q         
+  * https://youtu.be/3q3FV65ZrUs     
+* [p5.js](http://p5js.org/)    
+  * https://www.youtube.com/watch?v=8j0UDiN7my4     
+  * https://p5js.org/learn/             
+* [Storybook](https://storybook.js.org/)            
+  * https://www.youtube.com/watch?time_continue=106&v=p-LFh5Y89eM     
+  * https://www.learnstorybook.com/      
+* [React](https://reactjs.org/)          
+  * https://reactjs.org/tutorial/tutorial.html         
+  * https://reactjs.org/community/courses.html   
+* [Docker](https://www.docker.com/)      
+  * https://www.youtube.com/watch?v=C6LtRb1OJuw&app=desktop        
+ 
 ## Miscellaneous
 ### Digital Signal Processing theory:
 * https://www.youtube.com/watch?v=HJ_-5mqUZ70 
 * https://www.youtube.com/watch?v=spUNpyF58BY
-
-### Some music visualizers:      
-[Mazetools Soniface](https://www.mazetools.com/)        
-[Harmogram](https://harmogram.com/)       
-[Dadim](https://do.adive.in/music/99)          
-
+ 
 ### Music visualization theory:        
 [World Music Instrument Models and Theory Tools](https://www.facebook.com/WorldMusicInstrumentsAndTheory/)       
 [Visual Future of Music - Theory tools](https://visualfutureofmusic.blogspot.com/p/matrices-frequency-atlas.html)   
