@@ -80,7 +80,14 @@ Example of a basic page, based on components, using those three tools:
                             }
 
 ### Running the project on your local machine
-To avoid complex configuration, the backend of our application is running under Docker Compose.
+To avoid complex configuration, the backend of our application is running under Docker Compose.  
+
+Docker Compose container holds both basic Node server (there is still room for improvement, especially regarding security) and postgreSQL database.
+
+Basic forms exist in the front-end, right now they are outside the { setRoute } 'loop' in App.js but can be reached manually by giving different value to the {route} instead of 'playerpage'/'landingpage'.
+
+When the landing page will get its final design and structure, the forms will be implemented there.       
+     
 Installation:           
 https://docs.docker.com/compose/install/
 
