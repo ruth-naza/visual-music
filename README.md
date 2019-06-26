@@ -52,6 +52,7 @@ __Miscellaneous questions__
 ## Useful Links
 [Zero to Mastery - Guidelines on open source](https://github.com/zero-to-mastery/start-here-guidelines)            
 [CONTRIBUTING.md](https://github.com/zero-to-mastery/visual-music/blob/master/CONTRIBUTING.md)
+[GitHub and PR Guide](https://github.com/zero-to-mastery/visual-music/blob/master/Visual-Music-GitHub-PR-Guide.pdf)
 
 
 ## Functionalities
